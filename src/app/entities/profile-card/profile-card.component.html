@@ -1,1 +1,28 @@
-<div class="profile-card">profile-card works!</div>
+@if (profile) {
+<div class="profile-card">
+    <div class="avatar-name">
+        <img 
+        [src]="profile.avatarUrl | imgUrl"  
+        [alt]="profile.lastName" class="profile-card__avatar"/>
+
+        <div class="profile-card__name">
+            <strong>{{ profile.firstName }} {{ profile.lastName }}</strong>
+            <span>{{ profile.username }}</span>
+        </div>
+    </div>
+
+    <div class="profile-name__description">
+        {{ profile.description }}
+    </div>
+
+    <div class="profile-name__tags">
+        @for (skill of profile.stack; track profile.stack) {
+            <app-skill-tag [skill]="skill"></app-skill-tag>
+        }
+    </div>
+
+    <button class="btn">Подписаться</button>
+</div>
+} @else {
+    fdgsf
+}
